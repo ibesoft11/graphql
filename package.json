@@ -1,0 +1,14 @@
+{
+  "name": "graphql",
+  "version": "1.0.0",
+  "description": "A graphql server for the Rchain bounty interface application to enable faster and easy manipulation and retrieval of data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ibesoft",
+  "license": "GPL-2.0",
+  "dependencies": {
+    "babel-preset-node5": "^12.0.1"
+  }
+}
