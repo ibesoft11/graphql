@@ -9,6 +9,8 @@
   "author": "Ibesoft",
   "license": "GPL-2.0",
   "dependencies": {
-    "babel-preset-node5": "^12.0.1"
+    "babel-preset-node5": "^12.0.1",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.38.0"
   }
 }
