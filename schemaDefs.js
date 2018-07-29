@@ -116,6 +116,7 @@ const typeDefs = `
             vote_time: DateTime,
             slash: Int): String,
     createTrust_cert(subject: String!, voter: String!, rating: Int!, cert_time: DateTime!): String
+
   }
 `
 module.exports = typeDefs;
