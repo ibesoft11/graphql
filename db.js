@@ -248,4 +248,7 @@ const trust_cert = Conn.define('trust_cert', {
     }
 });
 
+Conn.sync(()=>{
+    console.log('Data models synced with MySql...');
+});
 module.exports = Conn;
