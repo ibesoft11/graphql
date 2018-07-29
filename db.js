@@ -12,7 +12,7 @@ const Conn = new Sequelize(
 
 const admin_settings = Conn.define('admin_settings', {
     current_pay_period: {
-        type: Sequelize.DATETIME,
+        type: Sequelize.DATE,
         allowNull: false
     }
 });
@@ -25,7 +25,7 @@ const authorities = Conn.define('authorities', {
         type: Sequelize.BIGINT
     },
     last_cert_time: {
-        type: Sequelize.DATETIME
+        type: Sequelize.DATE
     }
 });
 
@@ -35,7 +35,7 @@ const budget_vote = Conn.define('budget_vote', {
         allowNull: false
     },
     issue_num: {
-        type: INT,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     voter: {
@@ -47,7 +47,7 @@ const budget_vote = Conn.define('budget_vote', {
         allowNull: false
     },
     vote_time: {
-        type: Sequelize.DATETIME,
+        type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW
     }
@@ -55,9 +55,8 @@ const budget_vote = Conn.define('budget_vote', {
 
 const dataface_failed_logins = Conn.define('dataface_failed_logins', {
     attempt_id: {
-        type: Sequelize.INT,
+        type: Sequelize.INTEGER,
         allowNull: false,
-        autoIncrement: true,
         primayKey: true
     },
     ip_address: {
@@ -69,7 +68,7 @@ const dataface_failed_logins = Conn.define('dataface_failed_logins', {
         allowNull: false
     },
     time_of_attempt: {
-        type: Sequelize.INT,
+        type: Sequelize.INTEGER,
         allowNull: false
     }
 });
@@ -81,7 +80,7 @@ const dataface_modules = Conn.define('dataface_modules', {
         primayKey: true
     },
     module_version: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
     }
 });
 
@@ -92,13 +91,13 @@ const dataface_mtimes = Conn.define('dataface_mtimes', {
         primayKey: true
     },
     mtime: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
     }
 });
 
 const dataface_version = Conn.define('dataface_version', {
     version: {
-        type: Sequelize.INT,
+        type: Sequelize.INTEGER,
         allowNull: false
     }
 });
@@ -110,7 +109,7 @@ const github_users = Conn.define('github_users', {
         primayKey: true
     },
     followers: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
     },
     name: {
         type: Sequelize.STRING
@@ -134,19 +133,19 @@ const github_users = Conn.define('github_users', {
         type: Sequelize.STRING
     },
     createdAt: {
-        type: Sequelize.DATETIME
+        type: Sequelize.DATE
     },
     session_token: {
         type: Sequelize.STRING
     },
     verified_coop: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
     }
 });
 
 const issue = Conn.define('issue', {
     num: {
-        type: Sequelize.INT,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     title: {
@@ -158,12 +157,12 @@ const issue = Conn.define('issue', {
         type: Sequelize.TEXT
     },
     createdAt: {
-        type: Sequelize.DATETIME,
+        type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW
     },
     updatedAt: {
-        type: Sequelize.DATETIME,
+        type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW
     },
@@ -188,7 +187,7 @@ const pay_period = Conn.define('pay_period', {
         allowNull: false
     },
     weighted: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
     },
     rate: {
         type: Sequelize.FLOAT
@@ -202,7 +201,7 @@ const reward_vote = Conn.define('reward_vote', {
         primayKey: true
     },
     issue_num: {
-        type: Sequelize.INT,
+        type: Sequelize.INTEGER,
         allowNull: false,
         primayKey: true
     },
@@ -217,15 +216,15 @@ const reward_vote = Conn.define('reward_vote', {
         primayKey: true
     },
     percent: {
-        type: Sequelize.INT,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     vote_time: {
-        type: DATETIME,
+        type: Sequelize.DATE,
         defaultValue: Sequelize.NOW
     },
     slash: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
     }
 });
 
@@ -239,11 +238,11 @@ const trust_cert = Conn.define('trust_cert', {
         allowNull: false
     },
     rating: {
-        type: Sequelize.INT,
+        type: Sequelize.INTEGER,
         allowNull: false
     },
     cert_time: {
-        type: Sequelize.DATETIME,
+        type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW
     }
