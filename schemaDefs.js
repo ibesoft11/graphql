@@ -1,4 +1,6 @@
 const typeDefs = `
+  scalar DateTime
+
   type Query {
     admin_settings: [admin_settings],
     authorities: [authorities],
@@ -9,6 +11,7 @@ const typeDefs = `
     dataface_version: [dataface_version],
     github_users: [github_users],
     issue: [issue],
+    issues: [issue],
     pay_period: [pay_period],
     reward_vote: [reward_vote],
     trust_cert: [trust_cert]
@@ -93,30 +96,7 @@ const typeDefs = `
   }
 
   type Mutation {
-    createAdmin_settings(id: ID!, current_pay_period: DateTime!): String,
-    createAuthorities(login: String, rating: Int, last_cert_time: DateTime): String,
-    createBudget_vote(pay_period: DateTime!, issue_num: Int!, voter: String!, amount: Float!, vote_time: DateTime!): String,
-    createGithub_users(login: String!, followers: Int, name: String, location: String, email: String, bio: String,
-        websiteUrl: String,
-        avatarUrl: String,
-        permission: String,
-        createdAt: DateTime!,
-        session_token: String,
-        verified_coop: Int): String,
-    createDataface_failed_logins(attempt_id: Int!, ip_address: String!, username: String!, time_of_attempt: Int!): String,
-    createDataface_modules(module_name: String!, module_version: Int): String,
-    createDataface_mtimes(name: String!, mtime: Int): String,
-    createDataface_version(version: Int!): String,
-    createIssue(num: Int!, title: String!, labels: String, createdAt: DateTime!, updatedAt: DateTime!,
-            state: String!,
-            repo: String!): String,
-    createPay_period(start_date: DateTime!, end_date: DateTime!, weighted: Int, rate: Float): String,
-    createReward_vote(pay_period: DateTime!, issue_num: Int!, voter: String!, worker: String!,
-            percent: Int!,
-            vote_time: DateTime,
-            slash: Int): String,
-    createTrust_cert(subject: String!, voter: String!, rating: Int!, cert_time: DateTime!): String
-
+    createIssue(num: Int!, title: String!, labels: String, createdAt: DateTime!, updatedAt: DateTime!, state: String!, repo: String!): String,
   }
 `
 module.exports = typeDefs;
