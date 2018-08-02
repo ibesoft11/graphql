@@ -1,12 +1,12 @@
 var Sequelize = require("sequelize");
 
 const Conn = new Sequelize(
-    'bounty',
-    'root',
-    '',
+    'xataface',
+  'rchain',
+    'W3sh@r3',
     {
         dialect: 'mysql',
-        host: 'localhost'
+        host: 'rhobot.net'
     }
 );
 
