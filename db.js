@@ -3,19 +3,11 @@ var config = require("./config");
 
 const Conn = new Sequelize(
     'xataface',
-<<<<<<< HEAD
     config.user,
     config.password,
     {
         dialect: 'mysql',
         host: 'rhobot.net',
-=======
-  'rchain',
-    'W3sh@r3',
-    {
-        dialect: 'mysql',
-        host: 'rhobot.net'
->>>>>>> c3f857f40f45f29d366cab68bf7e06a184e2b201
     }
 );
 
@@ -31,7 +23,7 @@ const authorities = Conn.define('authorities', {
         type: Sequelize.STRING,
     },
     rating: {
-        type: Sequelize.BIGINT
+        type: Sequelize.TINYINT
     },
     last_cert_time: {
         type: Sequelize.DATE
@@ -247,7 +239,7 @@ const trust_cert = Conn.define('trust_cert', {
         allowNull: false
     },
     rating: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.TINYINT,
         allowNull: false
     },
     cert_time: {
