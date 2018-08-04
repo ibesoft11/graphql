@@ -3,19 +3,11 @@ var config = require("./config");
 
 const Conn = new Sequelize(
     'xataface',
-<<<<<<< HEAD
     config.user,
     config.password,
     {
         dialect: 'mysql',
         host: 'rhobot.net',
-=======
-  'rchain',
-    'W3sh@r3',
-    {
-        dialect: 'mysql',
-        host: 'rhobot.net'
->>>>>>> c3f857f40f45f29d366cab68bf7e06a184e2b201
     }
 );
 
