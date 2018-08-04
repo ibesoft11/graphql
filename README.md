@@ -16,6 +16,20 @@ npm install
 ```
 to install required dependencies.
 
+### Credentials
+This application requires valid login credentials to connect with the MySql database, on your project directory:
+* Create a file config.js
+* Inside config.js, type the following : 
+
+```
+var credentials = {
+    user: USERNAME,
+    password: PASSWORD
+}
+module.exports = credentials;
+
+```
+
 ### Testing
 To test the application on your local machine, run
 
