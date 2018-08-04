@@ -29,7 +29,7 @@ var credentials = {
 module.exports = credentials;
 
 ```
-
+*N/B: Replace USERNAME and PASSWORD with your login credentials*
 ### Testing
 To test the application on your local machine, run
 
