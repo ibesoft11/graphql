@@ -1,12 +1,13 @@
 var Sequelize = require("sequelize");
+var config = require("./config");
 
 const Conn = new Sequelize(
-    'bounty',
-    'root',
-    '',
+    'xataface',
+    config.user,
+    config.password,
     {
         dialect: 'mysql',
-        host: 'localhost'
+        host: 'rhobot.net',
     }
 );
 
