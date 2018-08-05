@@ -34,29 +34,6 @@ const resolvers = {
         pay_period: (root, args)=> Db.models.pay_period.findAll({where: args}),
         reward_vote: (root, args)=> Db.models.reward_vote.findAll({where: args}),
         trust_cert: (root, args)=> Db.models.trust_cert.findAll({where: args})
-    },
-    Mutation: {
-        createIssue: async (_, {num, title, labels, createdAt, updatedAt, state, repo}) =>{
-            let isCreated=false;
-          await Db.models.issue.create({
-              num: num,
-              title: title,
-              labels: labels,
-              createdAt: createdAt,
-              updatedAt: updatedAt,
-              state: state,
-              repo: repo
-          }).then(() => {
-              isCreated = true;
-          }).catch((err) => {
-              isCreated = false;
-          });
-          if (isCreated == true){
-            return "Issue created successfully";
-          } else {
-            return "Issue was not created, an error occurred";
-          }
-      }
     }
 }
 module.exports = resolvers;
