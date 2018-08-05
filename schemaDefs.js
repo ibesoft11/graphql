@@ -92,9 +92,5 @@ const typeDefs = `
     rating: Int!,
     cert_time: DateTime!
   }
-
-  type Mutation {
-    createIssue(num: Int!, title: String!, labels: String, createdAt: DateTime!, updatedAt: DateTime!, state: String!, repo: String!): String,
-  }
 `
 module.exports = typeDefs;
