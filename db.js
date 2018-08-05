@@ -120,6 +120,16 @@ const issue = Conn.define('issue', {
     labels: {
         type: Sequelize.TEXT
     },
+    createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.NOW
+    },
+    updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.NOW
+    },
     state: {
         type: Sequelize.STRING,
         allowNull: false
@@ -128,7 +138,10 @@ const issue = Conn.define('issue', {
         type: Sequelize.STRING,
         allowNull: false
     }
-});
+},{
+        timestamps: false
+    }
+);
 issue.removeAttribute('id');
 
 const pay_period = Conn.define('pay_period', {
@@ -142,15 +155,15 @@ const pay_period = Conn.define('pay_period', {
         allowNull: false
     },
     weighted: {
-        type: Sequelize.INTEGER
+        type: Sequelize.TINYINT
     },
     rate: {
         type: Sequelize.FLOAT
     }
+},{
+    timestamps: false
 });
 pay_period.removeAttribute('id');
-pay_period.removeAttribute('createdAt');
-pay_period.removeAttribute('updatedAt');
 
 const reward_vote = Conn.define('reward_vote', {
     pay_period: {
@@ -182,6 +195,9 @@ const reward_vote = Conn.define('reward_vote', {
         defaultValue: Sequelize.NOW
     },
     slash: {
+        type: Sequelize.INTEGER
+    },
+    weight: {
         type: Sequelize.INTEGER
     }
 });
