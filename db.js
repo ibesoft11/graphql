@@ -67,67 +67,6 @@ budget_vote.removeAttribute('id');
 budget_vote.removeAttribute('createdAt');
 budget_vote.removeAttribute('updatedAt');
 
-const dataface_failed_logins = Conn.define('dataface_failed_logins', {
-    attempt_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primayKey: true
-    },
-    ip_address: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    username: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    time_of_attempt: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    }
-});
-dataface_failed_logins.removeAttribute('id');
-dataface_failed_logins.removeAttribute('createdAt');
-dataface_failed_logins.removeAttribute('updatedAt');
-
-const dataface_modules = Conn.define('dataface_modules', {
-    module_name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        primayKey: true
-    },
-    module_version: {
-        type: Sequelize.INTEGER
-    }
-});
-dataface_modules.removeAttribute('id');
-dataface_modules.removeAttribute('createdAt');
-dataface_modules.removeAttribute('updatedAt');
-
-const dataface_mtimes = Conn.define('dataface_mtimes', {
-    name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        primayKey: true
-    },
-    mtime: {
-        type: Sequelize.INTEGER
-    }
-});
-dataface_mtimes.removeAttribute('id');
-dataface_mtimes.removeAttribute('createdAt');
-dataface_mtimes.removeAttribute('updatedAt');
-
-const dataface_version = Conn.define('dataface_version', {
-    version: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    }
-});
-dataface_version.removeAttribute('id');
-dataface_version.removeAttribute('createdAt');
-dataface_version.removeAttribute('updatedAt');
-
 const github_users = Conn.define('github_users', {
     login: {
         type: Sequelize.STRING,
