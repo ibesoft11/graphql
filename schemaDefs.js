@@ -12,8 +12,9 @@ const typeDefs = `
     issues: [issue],
     pay_period: [pay_period],
     reward_vote: [reward_vote],
-    trust_cert: [trust_cert]
+    trust_cert: [trust_cert],
   }
+ 
   type admin_settings {
     id: ID!,
     current_pay_period: DateTime!
