@@ -17,6 +17,8 @@ const admin_settings = Conn.define('admin_settings', {
         allowNull: false
     }
 });
+admin_settings.removeAttribute('createdAt');
+admin_settings.removeAttribute('updatedAt');
 
 const authorities = Conn.define('authorities', {
     login: {
@@ -29,6 +31,10 @@ const authorities = Conn.define('authorities', {
         type: Sequelize.DATE
     }
 });
+authorities.removeAttribute('id');
+authorities.removeAttribute('createdAt');
+authorities.removeAttribute('updatedAt');
+
 
 const budget_vote = Conn.define('budget_vote', {
     pay_period: {
@@ -51,8 +57,15 @@ const budget_vote = Conn.define('budget_vote', {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW
+    },
+    weight: {
+        type: Sequelize.INTEGER,
+        allowNull: false
     }
 });
+budget_vote.removeAttribute('id');
+budget_vote.removeAttribute('createdAt');
+budget_vote.removeAttribute('updatedAt');
 
 const dataface_failed_logins = Conn.define('dataface_failed_logins', {
     attempt_id: {
@@ -73,6 +86,9 @@ const dataface_failed_logins = Conn.define('dataface_failed_logins', {
         allowNull: false
     }
 });
+dataface_failed_logins.removeAttribute('id');
+dataface_failed_logins.removeAttribute('createdAt');
+dataface_failed_logins.removeAttribute('updatedAt');
 
 const dataface_modules = Conn.define('dataface_modules', {
     module_name: {
@@ -84,6 +100,9 @@ const dataface_modules = Conn.define('dataface_modules', {
         type: Sequelize.INTEGER
     }
 });
+dataface_modules.removeAttribute('id');
+dataface_modules.removeAttribute('createdAt');
+dataface_modules.removeAttribute('updatedAt');
 
 const dataface_mtimes = Conn.define('dataface_mtimes', {
     name: {
@@ -95,6 +114,9 @@ const dataface_mtimes = Conn.define('dataface_mtimes', {
         type: Sequelize.INTEGER
     }
 });
+dataface_mtimes.removeAttribute('id');
+dataface_mtimes.removeAttribute('createdAt');
+dataface_mtimes.removeAttribute('updatedAt');
 
 const dataface_version = Conn.define('dataface_version', {
     version: {
@@ -102,6 +124,9 @@ const dataface_version = Conn.define('dataface_version', {
         allowNull: false
     }
 });
+dataface_version.removeAttribute('id');
+dataface_version.removeAttribute('createdAt');
+dataface_version.removeAttribute('updatedAt');
 
 const github_users = Conn.define('github_users', {
     login: {
@@ -133,9 +158,6 @@ const github_users = Conn.define('github_users', {
     permission: {
         type: Sequelize.STRING
     },
-    createdAt: {
-        type: Sequelize.DATE
-    },
     session_token: {
         type: Sequelize.STRING
     },
@@ -143,6 +165,8 @@ const github_users = Conn.define('github_users', {
         type: Sequelize.INTEGER
     }
 });
+github_users.removeAttribute('id');
+github_users.removeAttribute('updatedAt');
 
 const issue = Conn.define('issue', {
     num: {
@@ -157,16 +181,6 @@ const issue = Conn.define('issue', {
     labels: {
         type: Sequelize.TEXT
     },
-    createdAt: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.NOW
-    },
-    updatedAt: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.NOW
-    },
     state: {
         type: Sequelize.STRING,
         allowNull: false
@@ -176,6 +190,7 @@ const issue = Conn.define('issue', {
         allowNull: false
     }
 });
+issue.removeAttribute('id');
 
 const pay_period = Conn.define('pay_period', {
     start_date: {
@@ -194,6 +209,9 @@ const pay_period = Conn.define('pay_period', {
         type: Sequelize.FLOAT
     }
 });
+pay_period.removeAttribute('id');
+pay_period.removeAttribute('createdAt');
+pay_period.removeAttribute('updatedAt');
 
 const reward_vote = Conn.define('reward_vote', {
     pay_period: {
@@ -228,6 +246,9 @@ const reward_vote = Conn.define('reward_vote', {
         type: Sequelize.INTEGER
     }
 });
+reward_vote.removeAttribute('id');
+reward_vote.removeAttribute('createdAt');
+reward_vote.removeAttribute('updatedAt');
 
 const trust_cert = Conn.define('trust_cert', {
     subject: {
@@ -248,8 +269,12 @@ const trust_cert = Conn.define('trust_cert', {
         defaultValue: Sequelize.NOW
     }
 });
+trust_cert.removeAttribute('id');
+trust_cert.removeAttribute('createdAt');
+trust_cert.removeAttribute('updatedAt');
 
 Conn.sync(()=>{
     console.log('Data models synced with MySql...');
 });
+//.then(() => {Conn.connectionManager.close().then(() => console.log('shut down gracefully'));}
 module.exports = Conn;
