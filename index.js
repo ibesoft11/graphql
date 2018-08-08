@@ -3,4 +3,5 @@ var resolvers = require('./schemaResolver');
 const { GraphQLServer } = require('graphql-yoga');
 
 const server = new GraphQLServer({typeDefs, resolvers});
-server.start(() => console.log('Server is running on localhost:4000'));
+const port = process.env.PORT || 4000;
+server.start({port: port}, () => console.log('Server is running on localhost:'+port));
