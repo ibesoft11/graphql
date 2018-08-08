@@ -16,6 +16,8 @@ const admin_settings = Conn.define('admin_settings', {
         type: Sequelize.DATE,
         allowNull: false
     }
+}, {
+    freezeTableName: true
 });
 admin_settings.removeAttribute('createdAt');
 admin_settings.removeAttribute('updatedAt');
@@ -30,11 +32,12 @@ const authorities = Conn.define('authorities', {
     last_cert_time: {
         type: Sequelize.DATE
     }
+},{
+    freezeTableName: true
 });
 authorities.removeAttribute('id');
 authorities.removeAttribute('createdAt');
 authorities.removeAttribute('updatedAt');
-
 
 const budget_vote = Conn.define('budget_vote', {
     pay_period: {
@@ -62,6 +65,8 @@ const budget_vote = Conn.define('budget_vote', {
         type: Sequelize.INTEGER,
         allowNull: false
     }
+},{
+    freezeTableName: true
 });
 budget_vote.removeAttribute('id');
 budget_vote.removeAttribute('createdAt');
@@ -103,6 +108,8 @@ const github_users = Conn.define('github_users', {
     verified_coop: {
         type: Sequelize.INTEGER
     }
+},{
+    freezeTableName: true
 });
 github_users.removeAttribute('id');
 github_users.removeAttribute('updatedAt');
@@ -139,7 +146,8 @@ const issue = Conn.define('issue', {
         allowNull: false
     }
 },{
-        timestamps: false
+        timestamps: false,
+        freezeTableName: true
     }
 );
 issue.removeAttribute('id');
@@ -161,7 +169,8 @@ const pay_period = Conn.define('pay_period', {
         type: Sequelize.FLOAT
     }
 },{
-    timestamps: false
+    timestamps: false,
+    freezeTableName: true
 });
 pay_period.removeAttribute('id');
 
@@ -200,6 +209,8 @@ const reward_vote = Conn.define('reward_vote', {
     weight: {
         type: Sequelize.INTEGER
     }
+},{
+    freezeTableName: true
 });
 reward_vote.removeAttribute('id');
 reward_vote.removeAttribute('createdAt');
@@ -223,6 +234,8 @@ const trust_cert = Conn.define('trust_cert', {
         allowNull: false,
         defaultValue: Sequelize.NOW
     }
+},{
+    freezeTableName: true
 });
 trust_cert.removeAttribute('id');
 trust_cert.removeAttribute('createdAt');
