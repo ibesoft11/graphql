@@ -18,14 +18,14 @@ const myDateType = new graph.GraphQLScalarType({
   }
 });
 
-function getInvoiceSummary(){
+//Resolver functions for views
+function getViewData(viewName){
   return new Promise(resolve => {
-    Db.query("SELECT * FROM `invoice_summary`", { type: Db.QueryTypes.SELECT}).then(users =>{
-      resolve(users);
+    Db.query(`SELECT * FROM ${viewName}`, { type: Db.QueryTypes.SELECT}).then(result =>{
+      resolve(result);
     });
   });
 }
-
 //Resolver for our schema definitions
 const resolvers = {
     DateTime: {
@@ -44,8 +44,35 @@ const resolvers = {
         reward_vote: (root, args)=> Db.models.reward_vote.findAll({where: args}),
         trust_cert: (root, args)=> Db.models.trust_cert.findAll({where: args}),
         //Use SQL Raw Queries to fetch data from Views
-        invoice_summary: (root, args)=> getInvoiceSummary().then((users)=>{
-          return users
+        invoice_summary: (root, args)=> getViewData('invoice_summary').then((result)=>{
+          return result;
+        }),
+        issue_budget: (root, args)=> getViewData('issue_budget').then((result)=>{
+          return result;
+        }),
+        issue_budget_unwt: (root, args)=> getViewData('issue_budget_unwt').then((result)=>{
+          return result;
+        }),
+        issue_budget_wt: (root, args)=> getViewData('issue_budget_wt').then((result)=>{
+          return result;
+        }),
+        reward: (root, args)=> getViewData('reward').then((result)=>{
+          return result;
+        }),
+        reward_unwt: (root, args)=> getViewData('reward_unwt').then((result)=>{
+          return result;
+        }),
+        reward_wt: (root, args)=> getViewData('reward_wt').then((result)=>{
+          return result;
+        }),
+        slash_judgement: (root, args)=> getViewData('slash_judgement').then((result)=>{
+          return result;
+        }),
+        task_approval_overdue: (root, args)=> getViewData('task_approval_overdue').then((result)=>{
+          return result;
+        }),
+        user_flair: (root, args)=> getViewData('user_flair').then((result)=>{
+          return result;
         })
     }
 }
