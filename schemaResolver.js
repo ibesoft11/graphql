@@ -4,7 +4,7 @@ var Db = require('./db.js');
 //define our custom DateTime type
 const myDateType = new graph.GraphQLScalarType({
   name: 'DateTime',
-  description: 'Description of DateTime scalar type',
+  description: 'DateTime scalar type',
   serialize(value) {
     return value.getTime();
   },
@@ -18,6 +18,15 @@ const myDateType = new graph.GraphQLScalarType({
   }
 });
 
+function getInvoiceSummary(){
+  return new Promise(resolve => {
+    Db.query("SELECT * FROM `invoice_summary`", { type: Db.QueryTypes.SELECT}).then(users =>{
+      resolve(users);
+    });
+  });
+}
+
+//Resolver for our schema definitions
 const resolvers = {
     DateTime: {
       myDateType
@@ -33,7 +42,11 @@ const resolvers = {
         issue: (root, args)=> Db.models.issue.findAll({where: {num: args.num}}),
         pay_period: (root, args)=> Db.models.pay_period.findAll({where: args}),
         reward_vote: (root, args)=> Db.models.reward_vote.findAll({where: args}),
-        trust_cert: (root, args)=> Db.models.trust_cert.findAll({where: args})
+        trust_cert: (root, args)=> Db.models.trust_cert.findAll({where: args}),
+        //Use SQL Raw Queries to fetch data from Views
+        invoice_summary: (root, args)=> getInvoiceSummary().then((users)=>{
+          return users
+        })
     }
 }
 module.exports = resolvers;
