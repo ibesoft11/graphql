@@ -7,8 +7,6 @@ const typeDefs = `
     budget_vote: [budget_vote],
     budget_votes: [budget_vote],
     github_users: [github_users],
-    github_user: [github_users],
-    issue: [issue],
     issues: [issue],
     pay_period: [pay_period],
     reward_vote: [reward_vote],
