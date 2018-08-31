@@ -13,11 +13,7 @@ const typeDefs = `
     trust_cert: [trust_cert],
     invoice_summary: [invoice_summary],
     issue_budget: [issue_budget],
-    issue_budget_unwt: [issue_budget_unwt],
-    issue_budget_wt: [issue_budget_wt],
     reward: [reward],
-    reward_unwt: [reward_unwt],
-    reward_wt: [reward_wt],
     slash_judgement: [slash_judgement],
     task_approval_overdue: [task_approval_overdue],
     user_flair: [user_flair]
@@ -51,36 +47,6 @@ const typeDefs = `
 	  pay_period: DateTime
   }
 
-  type reward_wt {
-    issue_num: Int,
-    title: String,
-    worker: String, 
-    reward_usd: Float,
-    percent_avg: Float,
-    budget_usd: Float,
-    voter_qty: Int,
-    voters: String,
-    reward_provisional: Float,
-    budget_provisional: Float,
-    pay_period: DateTime,
-    labels: String
-  }
-
-  type reward_unwt {
-    issue_num: Int,
-    title: String,
-    worker: String, 
-    reward_usd: Float,
-    percent_avg: Float,
-    budget_usd: Float,
-    voter_qty: Int,
-    voters: String,
-    reward_provisional: Float,
-    budget_provisional: Float,
-    pay_period: DateTime,
-    labels: String
-  }
-
   type reward {
     issue_num: Int,
     title: String,
@@ -92,28 +58,6 @@ const typeDefs = `
     voters: String,
     reward_provisional: Float,
     budget_provisional: Float,
-    pay_period: DateTime,
-    labels: String
-  }
- 
-  type issue_budget_wt {
-    issue_num: Int,
-    title: String,
-    budget_usd: Float,
-    budget_provisional: Float,
-    voter_qty: Int,
-    voters: String,
-    pay_period: DateTime,
-    labels: String
-  }
-
-  type issue_budget_unwt {
-    issue_num: Int,
-    title: String,
-    budget_usd: Float,
-    budget_provisional: Float,
-    voter_qty: Int,
-    voters: String,
     pay_period: DateTime,
     labels: String
   }

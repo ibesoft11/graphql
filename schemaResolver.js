@@ -48,19 +48,7 @@ const resolvers = {
         issue_budget: (root, args)=> getViewData('issue_budget').then((result)=>{
           return result;
         }),
-        issue_budget_unwt: (root, args)=> getViewData('issue_budget_unwt').then((result)=>{
-          return result;
-        }),
-        issue_budget_wt: (root, args)=> getViewData('issue_budget_wt').then((result)=>{
-          return result;
-        }),
         reward: (root, args)=> getViewData('reward').then((result)=>{
-          return result;
-        }),
-        reward_unwt: (root, args)=> getViewData('reward_unwt').then((result)=>{
-          return result;
-        }),
-        reward_wt: (root, args)=> getViewData('reward_wt').then((result)=>{
           return result;
         }),
         slash_judgement: (root, args)=> getViewData('slash_judgement').then((result)=>{
