@@ -20,12 +20,12 @@ const myDateType = new graph.GraphQLScalarType({
 
 //Resolver functions for views
 function getViewData(viewName, args){
-  var query = ``
+  var query = ``;
   for (item of Object.getOwnPropertyNames(args)){
-    query = query + `${item} = '${args[item]}' ${Object.getOwnPropertyNames(args)[Object.getOwnPropertyNames(args).length-1]==item ? '':'AND '}`;
+    query = query + `${item} = ${typeof(args[item]) == "string" ? `\"${args[item]}\"` : args[item]} ${Object.getOwnPropertyNames(args)[Object.getOwnPropertyNames(args).length-1]==item ? '':'AND '}`;
   }
   return new Promise(resolve => {
-    Db.query(`SELECT * FROM ${viewName} WHERE ${query}`, { type: Db.QueryTypes.SELECT}).then(result =>{
+    Db.query(`SELECT * FROM ${viewName} ${Object.keys(args).length > 0 ? 'WHERE' : ''} ${query}`, { type: Db.QueryTypes.SELECT}).then(result =>{
       resolve(result);
     });
   });
