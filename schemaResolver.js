@@ -19,6 +19,9 @@ const myDateType = new graph.GraphQLScalarType({
 });
 
 //Resolver functions for views
+/*
+Check length of arguments, determine the data type and then construct the query
+*/
 function getViewData(viewName, args){
   var query = ``;
   for (item of Object.getOwnPropertyNames(args)){
