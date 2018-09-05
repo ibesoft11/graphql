@@ -3,20 +3,19 @@ const typeDefs = `
 
   type Query {
     admin_settings: [admin_settings],
-    authorities: [authorities],
-    budget_vote: [budget_vote],
-    budget_votes: [budget_vote],
-    github_users: [github_users],
-    issues: [issue],
-    pay_period: [pay_period],
-    reward_vote: [reward_vote],
-    trust_cert: [trust_cert],
-    invoice_summary: [invoice_summary],
-    issue_budget: [issue_budget],
-    reward: [reward],
+    authorities(login: String, rating: Int): [authorities],
+    budget_votes(voter: String, issue_num: Int): [budget_vote],
+    github_users(login: String): [github_users],
+    issues(num: Int, state: String): [issue],
+    pay_period(start_date: DateTime): [pay_period],
+    reward_vote(pay_period: DateTime, issue_num: Int, voter: String, worker: String): [reward_vote],
+    trust_cert(subject: String, voter: String, rating: Int): [trust_cert],
+    invoice_summary(pay_period: DateTime, worker: String): [invoice_summary],
+    issue_budget(issue_num: Int, pay_period: DateTime): [issue_budget],
+    reward(issue_num: Int, pay_period: DateTime): [reward],
     slash_judgement: [slash_judgement],
-    task_approval_overdue: [task_approval_overdue],
-    user_flair: [user_flair]
+    task_approval_overdue(issue_num: Int, state: String): [task_approval_overdue],
+    user_flair(login: String): [user_flair]
   }
 
   type user_flair {
