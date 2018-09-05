@@ -19,9 +19,13 @@ const myDateType = new graph.GraphQLScalarType({
 });
 
 //Resolver functions for views
-function getViewData(viewName){
+function getViewData(viewName, args){
+  var query = ``
+  for (item of Object.getOwnPropertyNames(args)){
+    query = query + `${item} = '${args[item]}' ${Object.getOwnPropertyNames(args)[Object.getOwnPropertyNames(args).length-1]==item ? '':'AND '}`;
+  }
   return new Promise(resolve => {
-    Db.query(`SELECT * FROM ${viewName}`, { type: Db.QueryTypes.SELECT}).then(result =>{
+    Db.query(`SELECT * FROM ${viewName} WHERE ${query}`, { type: Db.QueryTypes.SELECT}).then(result =>{
       resolve(result);
     });
   });
@@ -34,7 +38,6 @@ const resolvers = {
     Query: {
         admin_settings: (root, args)=> Db.models.admin_settings.findAll({where: args}),
         authorities: (root, args)=> Db.models.authorities.findAll({where: args}),
-        budget_vote: (root, args)=> Db.models.budget_vote.findAll({where:{issue_num: args.issue_num}}),
         budget_votes: (root, args)=> Db.models.budget_vote.findAll({where: args}),
         github_users: (root, args)=> Db.models.github_users.findAll({where: args}),
         issues: (root, args)=> Db.models.issue.findAll({where: args}),
@@ -42,22 +45,22 @@ const resolvers = {
         reward_vote: (root, args)=> Db.models.reward_vote.findAll({where: args}),
         trust_cert: (root, args)=> Db.models.trust_cert.findAll({where: args}),
         //Use SQL Raw Queries to fetch data from Views
-        invoice_summary: (root, args)=> getViewData('invoice_summary').then((result)=>{
+        invoice_summary: (root, args)=> getViewData('invoice_summary', args).then((result)=>{
           return result;
         }),
-        issue_budget: (root, args)=> getViewData('issue_budget').then((result)=>{
+        issue_budget: (root, args)=> getViewData('issue_budget', args).then((result)=>{
           return result;
         }),
-        reward: (root, args)=> getViewData('reward').then((result)=>{
+        reward: (root, args)=> getViewData('reward', args).then((result)=>{
           return result;
         }),
-        slash_judgement: (root, args)=> getViewData('slash_judgement').then((result)=>{
+        slash_judgement: (root, args)=> getViewData('slash_judgement', args).then((result)=>{
           return result;
         }),
-        task_approval_overdue: (root, args)=> getViewData('task_approval_overdue').then((result)=>{
+        task_approval_overdue: (root, args)=> getViewData('task_approval_overdue', args).then((result)=>{
           return result;
         }),
-        user_flair: (root, args)=> getViewData('user_flair').then((result)=>{
+        user_flair: (root, args)=> getViewData('user_flair', args).then((result)=>{
           return result;
         })
     }
