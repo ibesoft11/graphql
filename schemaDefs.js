@@ -108,7 +108,7 @@ const typeDefs = `
     permission: String,
     createdAt: DateTime!,
     session_token: String,
-    verified_coop: Int
+    verified_coop: String
   }
   type dataface_failed_logins {
     attempt_id: Int!,

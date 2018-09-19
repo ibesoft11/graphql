@@ -106,7 +106,7 @@ const github_users = Conn.define('github_users', {
         type: Sequelize.STRING
     },
     verified_coop: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
     }
 },{
     freezeTableName: true
